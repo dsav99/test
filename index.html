@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Firebase Setup</title>
+    </head>
+    <body>
+    
+    
+        <input type="button" name="add" value="ADD" onclick="add()">
+        <script type="text/javascript"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+        <script>
+            const firebaseConfig = {
+              apiKey: "AIzaSyBOOmd03tPOYou_RxYcvwGCd7_mFEtawPc",
+              authDomain: "todolist-sd.firebaseapp.com",
+              projectId: "todolist-sd",
+              storageBucket: "todolist-sd.appspot.com",
+              messagingSenderId: "157924133557",
+              appId: "1:157924133557:web:5f240491643d5b75fd8cfc",
+              databaseURL: "https://todolist-sd-default-rtdb.asia-southeast1.firebasedatabase.app"
+            };
+    
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+    
+        </script>
+    </body>
+    </html>
+
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="title">
+        MY TASKS
+    </div>
+
+    <button id="add" onclick="addTask()">
+       Display Tasks
+    </button>
+
+    <form id="myForm">
+        <label for="name">Enter username:</label><br>
+        <input type="text" id="username" name="taskName" value=" "><br>
+        <label for="taskName">Enter name:</label><br>
+        <input type="text" id="name" name="taskName" value=" "><br>
+        <label for="dob">Enter Dob:</label><br>
+        <input type="date" id="dob" name="taskName" ><br>
+        Male:<input type="radio" value="Male" name="gender">
+        Female:<input type="radio" value="Female" name="gender">
+        Others:<input type="radio" value="Others" name="gender"><br>
+        Enter hobbies:(Enter with a space )<input type="text" id="hobbies" name="taskName"><br>
+        <input type="button" onclick="addTask2()" value="Submit">
+      </form>
+
+    <div id="tasks">
+        
+    </div>
+</body>
+</html>

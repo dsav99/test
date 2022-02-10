@@ -1,0 +1,59 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap');
+body{  
+    background-color: rgba(0,0,0,0.1);
+    font-family: "Nunito";
+}
+
+#title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    margin: 50px;
+}
+
+.task{
+    margin-bottom: 10px;
+    position: relative;
+    color: black;
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    border-radius:5px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+
+.task-name{
+    margin: 10px;
+    flex-grow: 3;
+    font-weight: 500;
+}
+
+.task-category{
+    justify-self: flex-end;
+    margin: 10px;
+    color: white;
+    background-color: purple;
+    padding: 5px;
+    border-radius: 4px;
+    flex-direction: row-reverse;
+}
+.task-status{
+    justify-self: flex-end;
+    background-color: red;
+    border-radius:50% ;
+    height: 15px;
+    width: 15px;
+    margin: 10px;
+    
+}
+.task-deadline{
+    justify-self: flex-end;
+    margin: 10px;
+    color: gray;
+    
+}
