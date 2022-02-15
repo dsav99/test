@@ -18,11 +18,30 @@
       gender =x.elements[4].value;
 
     if(x.elements[5].checked)
-      gender =x.elements[5].value;    
+      gender =x.elements[5].value;   
 
-    
+
 
     const dbRef = firebase.database().ref();
+
+      const storageRef = firebase.storage().ref();
+
+      const file = document.getElementById("imagess").files[0];
+      
+      const name = "Background";
+    
+      const task = storageRef.child(username);
+    
+      task.put(file).then((snapshot) => {
+        alert("Image uploaded")
+      });
+
+      storageRef.child(username+'.png').then((url)=> {
+          console.log(url);
+      });
+
+
+
     dbRef.child("users").child(username).get().then((snapshot) => {
        console.log("Here: "+snapshot.val());
       if (snapshot.exists()) {
@@ -33,6 +52,7 @@
             name:name,
             dob:dob,
             hobbies:hobbiesArray,
+            
           });
 
           for(let i=0;i<hobbiesArray.length;i++){
@@ -48,7 +68,24 @@
     });
   }
 }
+
+function addTask(){
+
+
+  const ref = firebase.storage().ref();
+
+  const file = document.getElementById("imagess").files[0];
   
+  const name = "Background";
+
+  const task = ref.child("images/"+name);
+
+  task.put(file).then((snapshot) => {
+    alert("Image uploaded")
+  });
+}
+  
+
 
 
 

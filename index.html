@@ -23,6 +23,8 @@
         <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>       
+
         <script>
             const firebaseConfig = {
               apiKey: "AIzaSyBOOmd03tPOYou_RxYcvwGCd7_mFEtawPc",
@@ -31,7 +33,8 @@
               storageBucket: "todolist-sd.appspot.com",
               messagingSenderId: "157924133557",
               appId: "1:157924133557:web:5f240491643d5b75fd8cfc",
-              databaseURL: "https://todolist-sd-default-rtdb.asia-southeast1.firebasedatabase.app"
+              databaseURL: "https://todolist-sd-default-rtdb.asia-southeast1.firebasedatabase.app",
+              storageBucket: "gs://todolist-sd.appspot.com"
             };
     
             firebase.initializeApp(firebaseConfig);
@@ -63,8 +66,14 @@
         Female:<input type="radio" value="Female" name="gender">
         Others:<input type="radio" value="Others" name="gender"><br>
         Enter hobbies:(Enter with a space )<input type="text" id="hobbies" name="taskName"><br>
+        <input type="file" id="imagess">
         <input type="button" onclick="addTask2()" value="Submit">
       </form>
+
+      <!-- <input type="file" id="imagess">
+      <button onclick="addTask()">Upload image</button> -->
+      <!-- <img id="download" src="" alt="">
+      <button onclick="getImage()">Download image</button> -->
 
     <div id="tasks">
         
