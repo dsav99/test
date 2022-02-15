@@ -1,7 +1,7 @@
   function addTask2() {
 
     var x= document.getElementById("myForm");
-    let username = document.getElementById("username").value;
+    var username = document.getElementById("username").value;
     //console.log(username);
     let name = document.getElementById("name").value;
     //console.log(name);
@@ -20,6 +20,8 @@
     if(x.elements[5].checked)
       gender =x.elements[5].value;   
 
+      var imageURL;
+
 
 
     const dbRef = firebase.database().ref();
@@ -30,42 +32,78 @@
       
       const name = "Background";
     
-      const task = storageRef.child(username);
+      
+      console.log(":"+username+":");
     
-      task.put(file).then((snapshot) => {
+      storageRef.child(username).put(file).then((snapshot) => {
         alert("Image uploaded")
       });
 
-      storageRef.child(username+'.png').then((url)=> {
-          console.log(url);
-      });
-
-
-
-    dbRef.child("users").child(username).get().then((snapshot) => {
-       console.log("Here: "+snapshot.val());
-      if (snapshot.exists()) {
-        alert("Username already exists!")
-      } else {
-        firebase.database().ref('users/'+username).set({
-            username: username,
-            name:name,
-            dob:dob,
-            hobbies:hobbiesArray,
-            
-          });
-
-          for(let i=0;i<hobbiesArray.length;i++){
-            dbRef.child("hobbies/"+hobbiesArray[i]+"/"+username).set({
-              username:name,
-            });
+      setTimeout(()=>{
+        dbRef.child("users").child(username).get().then((snapshot) => {
+          //  console.log("Here: "+snapshot.val());
+          if (snapshot.exists()) {
+            alert("Username already exists!")
+          } else {
+            firebase.database().ref('users/'+username).set({
+                username: username,
+                name:name,
+                dob:dob,
+                hobbies:hobbiesArray,
+                url:imageURL,
+              });
+    
+              for(let i=0;i<hobbiesArray.length;i++){
+                dbRef.child("hobbies/"+hobbiesArray[i]+"/"+username).set({
+                  username:name,
+                });
+              }
+    
+              
           }
+        }).catch((error) => {
+          console.error(error);
+        });
+      },10000);
+
+      
+
+      setTimeout(()=>{
+        storageRef.child(username).getDownloadURL().then((url)=> {
+          imageURL=url;
+          console.log("Here:  "+imageURL);
+          
+      });
+      },5000);
+
+      
+
+
+
+    // dbRef.child("users").child(username).get().then((snapshot) => {
+    //   //  console.log("Here: "+snapshot.val());
+    //   if (snapshot.exists()) {
+    //     alert("Username already exists!")
+    //   } else {
+    //     firebase.database().ref('users/'+username).set({
+    //         username: username,
+    //         name:name,
+    //         dob:dob,
+    //         hobbies:hobbiesArray,
+    //         url:imageURL,
+    //       });
+
+    //       for(let i=0;i<hobbiesArray.length;i++){
+    //         dbRef.child("hobbies/"+hobbiesArray[i]+"/"+username).set({
+    //           username:name,
+    //         });
+    //       }
 
           
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
+    //   }
+    // }).catch((error) => {
+    //   console.error(error);
+    // });
   }
 }
 
